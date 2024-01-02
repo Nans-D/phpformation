@@ -1,0 +1,14 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+}
+
+input::placeholder {
+  font-family: "Arial", sans-serif; /* Changer la police */
+  font-size: 8px; /* Changer la taille de la police */
+  color: #999; /* Changer la couleur du texte */
+}

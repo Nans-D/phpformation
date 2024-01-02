@@ -226,6 +226,132 @@
         ?>
     </div>
 
+    <!-- 3. Sélection de Places de Parking Disponibles
+    Exercice : Imaginez que vous avez un tableau représentant les places de parking et 
+    leur disponibilité. Utilisez une boucle pour parcourir le tableau et sélectionner la 
+    première place disponible. 
+    Gérez le cas où il n'y a plus de places disponibles. -->
+    <div>
+        <?php
+        class Parking
+        {
+            public $id;
+            public $available;
+
+            public function __construct($id, $available)
+            {
+                $this->id = $id;
+                $this->available = $available;
+            }
+        }
+        $parkingArray = [];
+        $parkingArray[] = new Parking(1, false);
+        $parkingArray[] = new Parking(2, false);
+
+        $foundspot = false;
+        foreach ($parkingArray as $spot) {
+
+            if ($spot->available) {
+                echo "la place disponible est le parking numero : $spot->id";
+                $foundspot = true;
+            }
+        }
+        if (!$foundspot) {
+            echo "Aucune place disponible";
+        }
+
+        ?>
+    </div>
+
+    <!-- 4. Gestion des Erreurs lors de la Réservation
+Exercice : Simulez un processus de réservation de parking et utilisez la gestion des erreurs pour traiter des situations 
+comme une entrée invalide ou une tentative de réservation d'une place déjà occupée. -->
+
+    <div>
+        <?php
+        class Parking2
+        {
+            public $id;
+            public $available;
+
+            public function __construct($id, $available)
+            {
+                $this->id = $id;
+                $this->available = $available;
+            }
+        }
+
+        $arrayParking2 = [];
+        $arrayParking2[] = new Parking2(1, true);
+        $arrayParking2[] = new Parking2(2, false);
+
+        function reservation2($id, $arrayParking2)
+        {
+            if (!is_numeric($id)) {
+                throw new Exception("Veuillez entrer une place valide");
+            }
+
+            foreach ($arrayParking2 as $spot) {
+                if ($spot->id == $id) {
+                    if (!$spot->available) {
+                        throw new Exception("La place $id est déjà prise");
+                    } else {
+                        $spot->available = false; // Marquer la place comme réservée
+                        return "Vous avez réservé la place numéro $id";
+                    }
+                }
+            }
+            throw new Exception("Place non trouvée");
+        }
+
+        try {
+            $resultat3 = reservation2(2, $arrayParking2);
+            echo $resultat3;
+        } catch (Exception $e) {
+            echo "Erreur : " . $e->getMessage();
+        }
+        ?>
+
+    </div>
+
+    <!-- 5. Tri et Affichage des Places -->
+    <!-- Exercice : À partir d'un tableau contenant des informations sur différentes places de parking 
+(comme le numéro de la place, le statut de disponibilité, etc.), utilisez des boucles et des conditions pour trier et 
+afficher les places par ordre de disponibilité ou de numéro. -->
+
+    <div>
+        <?php
+        class Parking3
+        {
+            public $id;
+            public $name;
+            public $isAvailable;
+
+            public function __construct($id, $name, $isAvailable)
+            {
+                $this->id = $id;
+                $this->name = $name;
+                $this->isAvailable = $isAvailable;
+            }
+        }
+
+        $arrayParking3 = [];
+        $arrayParking3[] = new Parking3(1, "Clichy", true);
+        $arrayParking3[] = new Parking3(2, "15eme", true);
+        $arrayParking3[] = new Parking3(3, "Nanterre", false);
+        $arrayParking3[] = new Parking3(4, "Saint-denis", false);
+
+        foreach ($arrayParking3 as $spot) {
+            if ($spot->isAvailable === false) {
+                echo $spot->isAvailable . "test";
+            }
+        }
+
+        ?>
+    </div>
+
+
+
 </body>
 
 </html>
