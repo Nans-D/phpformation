@@ -101,9 +101,12 @@
         }
         ?>
     </div>
-
+    <br>
     <!-- 2eme partie -->
+    <strong>2eme partie</strong>
 
+    <!-- 1. **Calculatrice de TVA :**
+   - Écrivez un script PHP qui calcule le montant de la TVA sur un prix donné et le prix total (prix + TVA). Utilisez une fonction pour calculer la TVA. -->
     <div>
         <?php
 
@@ -119,6 +122,9 @@
         echo "Le montant de la TVA est de $montantTVA"
         ?>
     </div>
+
+    <!-- 2. **Générateur de Table de Multiplication :**
+   - Créez un script PHP qui génère une table de multiplication jusqu'à un certain nombre. Par exemple, affichez la table de multiplication pour les nombres de 1 à 10. -->
     <div>
         <?php
         function multiplicateTable($nombre)
@@ -135,6 +141,9 @@
         ?>
     </div>
 
+    <!-- 3. **Validation de Formulaire :**
+   - Écrivez un formulaire HTML avec des champs pour un nom d'utilisateur et un mot de passe. Puis, utilisez PHP pour valider que le nom d'utilisateur n'est pas vide et que le mot de passe a au moins 8 caractères.
+ -->
     <div>
 
         <form action="monfichier2.php" method="POST">
@@ -158,6 +167,9 @@
         }
         ?>
     </div>
+
+    <!-- 4. **Conversion d'Unités :**
+   - Faites un script qui convertit les unités de mesure (par exemple, de kilomètres en miles, ou de Celsius en Fahrenheit) et affiche le résultat. -->
     <div>
         <?php
         function intoFahrenheit($nombre)
@@ -171,6 +183,9 @@
 
         ?>
     </div>
+
+    <!-- 5. **Tri de Tableau :**
+   - Créez un tableau contenant une liste de nombres ou de chaînes de caractères. Utilisez différentes fonctions de tri en PHP pour trier le tableau, et affichez le résultat avant et après le tri. -->
     <div>
         <?php
         $array = [3, "apple", 1, "orange", 4, "banana"];
@@ -182,6 +197,9 @@
         print_r($array)
         ?>
     </div>
+
+    <!-- 7. **Calcul de l'Âge :**
+   - Demandez à l'utilisateur de saisir sa date de naissance via un formulaire, puis utilisez PHP pour calculer et afficher son âge. -->
     <div>
 
         <form action="monfichier2.php" method="POST">
@@ -206,6 +224,10 @@
         ?>
     </div>
 
+
+    <!-- 8. **Gestion des Erreurs :**
+   - Créez un script qui tente de diviser deux nombres, mais gère le cas où le diviseur est zéro en affichant un message d'erreur sans arrêter le script.
+ -->
     <div>
         <?php
         function diviseur($nombre1, $nombre2)
@@ -225,6 +247,9 @@
         diviseur(10, 2);
         ?>
     </div>
+
+    <!-- 10. **Générateur de Citation Aléatoire :**
+    - Créez un tableau contenant plusieurs citations. Utilisez PHP pour afficher une citation aléatoire à chaque fois que la page est chargée. -->
     <div>
         <?php
         $citations = ["citation1", "citation2", "citation3", "citation4"];
@@ -232,10 +257,97 @@
         echo $citations[$indicesCitations];
         ?>
     </div>
+    <br>
+
+    <!-- 3eme partie -->
+    <strong>3eme partie</strong>
 
 
+    <!-- 1. **Générateur d'Emails Temporaires :**
+    - Écrivez un script PHP qui génère des adresses email temporaires. Par exemple, "user12345@tempmail.com", où "12345" est un numéro aléatoire. -->
+
+    <div>
+        <?php
+        $nbreAleatoire = mt_rand(1000, 9999);
+        echo "user$nbreAleatoire@gmail.com";
+        ?>
+    </div>
+
+    <!-- 2. **Calculatrice de BMR (Basal Metabolic Rate) :**
+   - Créez un formulaire qui demande l'âge, le sexe, le poids et la taille de l'utilisateur. Écrivez une fonction PHP qui calcule et retourne le BMR (taux métabolique de base) de l'utilisateur en fonction de ces données. -->
+    <div>
+        <form action="monfichier2.php" method="POST">
+            <input type="number" name="age" placeholder="Entrez votre age">
+            <select name="genre" id="">
+                <option value="homme">Homme</option>
+                <option value="femme">Femme</option>
+            </select>
+            <input type="number" name="poids" placeholder="Entrez votre poids">
+            <input type="number" name="taille" placeholder="Entrez votre taille en cm">
+            <button type="submit">Envoyer</button>
+        </form>
+        <?php
+        $age = $_POST["age"];
+        $genre = $_POST["genre"];
+        $poids = $_POST["poids"];
+        $taille = $_POST["taille"];
 
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (is_numeric($age) && is_numeric($poids) && is_numeric($taille)) {
+
+                switch ($genre) {
+                    case 'homme':
+                        $BRMHomme = 88.362 + (13.397 * $poids) + (4.799 * $taille) - (5.677 * $age);
+                        echo $BRMHomme;
+                        break;
+
+                    case 'femme':
+                        $BRFemme = 447.593 + (9.247 * $poids) + (3.098 * $taille) - (4.330 * $age);
+                        echo $BRFemme;
+                        break;
+                    default:
+                        echo "error";
+                        break;
+                }
+            } else {
+                echo 'entrez des chiffres seulement';
+            }
+        }
+
+        ?>
+    </div>
+
+    <!-- 3. **Validation de Formulaire Avancée :**
+   - Élaborez un formulaire de contact avec validation côté serveur. Assurez-vous que le nom, l'email et le message sont non seulement présents, mais aussi valides (par exemple, l'email doit avoir un format correct). -->
+    <div>
+        <form action="monfichier2.php" method="post">
+            <input type="text" name="name" id="" placeholder="nom">
+            <input type="text" name="mail" id="" placeholder="email">
+            <textarea name="message" id="" cols="30" rows="10" placeholder="message"></textarea>
+            <button type="submit">envoyer</button>
+        </form>
+        <?php
+        $name = $_POST["name"];
+        $email = $_POST["mail"];
+        $message = $_POST["message"];
+
+        try {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (is_string($name) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo "Message bien recu";
+                } else {
+                    throw new Exception("mistake");
+                }
+            }
+        } catch (Exception $e) {
+            echo "error " . $e->getMessage();
+        }
+        ?>
+    </div>
+
+    <!-- Gestionnaire de Fichiers Simples :
+Écrivez un script PHP pour lister tous les fichiers d'un répertoire donné et afficher leur taille en octets. -->
 
 </body>
 

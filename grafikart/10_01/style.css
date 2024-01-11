@@ -1,0 +1,42 @@
+.glace-container {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.form-container {
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+}
+
+.choice-container {
+  border: 1px solid black;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-center {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.total-price {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  padding: 1em;
+  border: 1px solid black;
+  color: red;
+  width: 10em;
+  margin-right: auto;
+  margin-left: auto;
+}
