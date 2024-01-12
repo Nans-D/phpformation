@@ -43,3 +43,47 @@ function radio(string $name, string $value, array $data)
     <input type="radio" name="{$name}" value="$value" $attributes>
 HTML;
 }
+
+
+
+function creneaux_html(array $creneaux)
+{
+
+    if (empty($creneaux)) {
+        return "Fermé";
+    }
+    $phrases = [];
+    foreach ($creneaux as $creneau) {
+        $phrases[] = " de {$creneau[0]}h à {$creneau[1]}h";
+    }
+
+    return 'Ouvert' . implode(' et ', $phrases); // Utiliser une chaîne vide comme séparateur
+
+}
+    
+
+
+// // MA VERSION
+// function creneaux_html(array $creneaux, array $days)
+// {
+//     $phrases = [];
+//     $i = 0;
+
+//     foreach ($creneaux as $creneau) {
+//         $day = $days[$i]; // Accéder directement au jour correspondant
+//         if (empty($creneau)) {
+//             $phrases[] = "Fermé le $day <br>";
+//         } else {
+//             // Construction de la phrase pour les horaires d'ouverture
+//             $phrase = "Ouvert le $day de {$creneau[0][0]}h à {$creneau[0][1]}h";
+//             // Vérifier s'il existe un deuxième créneau
+//             if (isset($creneau[1])) {
+//                 $phrase .= " et de {$creneau[1][0]}h à {$creneau[1][1]}h";
+//             }
+//             $phrase .= " <br>";
+//             $phrases[] = $phrase;
+//         }
+//         $i++;
+//     }
+//     return implode('', $phrases); // Utiliser une chaîne vide comme séparateur
+// }
