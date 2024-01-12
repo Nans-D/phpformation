@@ -60,7 +60,46 @@ function creneaux_html(array $creneaux)
     return 'Ouvert' . implode(' et ', $phrases); // Utiliser une chaîne vide comme séparateur
 
 }
-    
+
+
+function in_creneaux(int $heure, array $creneaux)
+{
+    foreach ($creneaux as $creneau) {
+        if (($heure > $creneau[0][0] && $heure < $creneau[0][1]) || ($heure > $creneau[1][0] && $heure < $creneau[1][1])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+function select(string $name, $value, array $options): string
+{
+    $html_options = [];
+    foreach ($options as $k => $option) {
+        $attributes = $k == $value ? 'selected' : '';
+        $html_options[] = "<option value='$k' $attributes>$option</option>";
+    }
+
+    return "<select name='$name'>" . implode($html_options) . '</select>';
+}
+
+function getTime(int $jours, int $heure, array $creneaux): bool
+{
+
+    if ($jours === 5 || $jours === 6) {
+        return false;
+    } else {
+        foreach ($creneaux as $creneau) {
+            if (($heure > $creneau[0][0] && $heure < $creneau[0][1]) || ($heure > $creneau[1][0] && $heure < $creneau[1][1])) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+
 
 
 // // MA VERSION
