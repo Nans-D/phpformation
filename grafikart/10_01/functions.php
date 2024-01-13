@@ -20,7 +20,8 @@ function nav_menu(string $linkClass = ''): string
         nav_item("index.php", "Accueil", $linkClass) .
         nav_item("contact.php", "Contact", $linkClass) .
         nav_item("jeu.php", "Jeu", $linkClass) .
-        nav_item("checkbox.php", "Checkbox", $linkClass);
+        nav_item("checkbox.php", "Checkbox", $linkClass) .
+        nav_item("porn.php", "Porn", $linkClass);
 }
 
 function checkbox(string $name, string $value, array $data)
