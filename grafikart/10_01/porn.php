@@ -14,7 +14,7 @@ require 'header.php' ?>
     <label for="age">Age : </label>
     <select name="age">
         <?php for ($i = 1919; $i < 2020; $i++) : ?>
-            <option value="<?= $i ?>" <?= ($i === (int)$_COOKIE["ageUser"]) ? 'selected' : ''; ?>><?= $i ?></option>;
+            <option value="<?= $i ?>" <?= (!empty($_COOKIE["ageUser"])) && $i == $_COOKIE["ageUser"] ? 'selected' : ''; ?>><?= $i ?></option>;
         <?php endfor ?>
 
     </select>
@@ -22,10 +22,13 @@ require 'header.php' ?>
     <button type="submit">Envoyer</button>
 </form>
 
-<?php if ((int)date('Y', time()) - ((int)$userAge) > 18) : ?>
-    <div class="alert alert-success">Vous avez l'age requis</div>
+<?php if (empty($_COOKIE["ageUser"])) : ?>
+    Entrez votre age
 <?php else : ?>
-    <div class="alert alert-danger">Vous n'avez pas l'age requis</div>
+    <?php if (!is_null($userAge) && (int)date('Y') - (int)$userAge > 18) : ?>
+        <div class="alert alert-success">Vous avez l'age requis</div>
+    <?php else : ?>
+        <div class="alert alert-danger">Vous n'avez pas l'age requis</div>
+    <?php endif ?>
 <?php endif ?>
-<?php var_dump((int)date('Y', time()) - ((int)$userAge), (int)date('Y', time()), (int)$userAge) ?>
 <?php require 'footer.php' ?>
