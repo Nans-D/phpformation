@@ -101,21 +101,7 @@ function getTime(int $jours, int $heure, array $creneaux): bool
     }
 }
 
-function connexion(string $userName, string $userPassword): bool
-{
-    $users = [
-        'user' => 'nans',
-        'password' => '1234'
-    ];
 
-
-    if ($userName === $users['user'] && $userPassword === $users['password']) {
-        return true;
-    } else {
-        return false;
-    }
-    var_dump($userName);
-}
 
 
 

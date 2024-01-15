@@ -42,7 +42,7 @@ foreach (['parfum', 'supplement', 'cornet'] as $name) {
         }
     }
 }
-require 'header.php'
+require 'elements/header.php'
 ?>
 
 
@@ -128,4 +128,4 @@ require 'header.php'
 
 </pre>
 
-<?php require 'footer.php' ?>
+<?php require 'elements/footer.php' ?>

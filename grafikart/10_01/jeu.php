@@ -13,7 +13,7 @@ if (isset($_POST['chiffre'])) {
         $success = "Bravo ! Le bon nombre était $aDeviner";
     }
 }
-require 'header.php';
+require 'elements/header.php';
 ?>
 <form action="jeu.php" method="POST">
     <?php if ($erreur) : ?>
@@ -28,5 +28,5 @@ require 'header.php';
     <input type="number" name="chiffre" placeholder="Entre 0 et 1000" value="<?= $value ?>">
     <button type="submit">Deviner</button>
 </form>
-<?php require 'footer.php';
+<?php require 'elements/footer.php';
 ?>

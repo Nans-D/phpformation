@@ -1,5 +1,5 @@
 <?php
-require 'header.php' ?>
+require 'elements/header.php' ?>
 
 <main role="main" class="container">
 
@@ -10,4 +10,4 @@ require 'header.php' ?>
 
 </main>
 
-<?php require 'footer.php' ?>
+<?php require 'elements/footer.php' ?>

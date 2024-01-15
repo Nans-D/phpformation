@@ -25,7 +25,7 @@ if ($jour !== null && $heure2 !== null) {
 // MA SOLUTION
 // $creneaux = creneaux_html(CRENEAUX, JOURS);
 
-require 'header.php'
+require 'elements/header.php'
 ?>
 
 <div class="row">
@@ -89,4 +89,4 @@ require 'header.php'
         </div>
     </div>
 
-    <?php require 'footer.php' ?>
+    <?php require 'elements/footer.php' ?>

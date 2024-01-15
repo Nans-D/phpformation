@@ -8,7 +8,7 @@ if (!empty($_GET['age'])) {
 if (!empty($_COOKIE['ageUser'])) {
     $userAge = $_COOKIE['ageUser'];
 }
-require 'header.php' ?>
+require 'elements/header.php' ?>
 
 <form action="" method="get">
     <label for="age">Age : </label>
@@ -31,4 +31,4 @@ require 'header.php' ?>
         <div class="alert alert-danger">Vous n'avez pas l'age requis</div>
     <?php endif ?>
 <?php endif ?>
-<?php require 'footer.php' ?>
+<?php require 'elements/footer.php' ?>

@@ -1,4 +1,8 @@
-<?php require_once 'functions.php' ?>
+<?php
+require_once 'functions.php';
+require_once 'functions/auth.php';
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -54,6 +58,12 @@
             <ul class="navbar-nav mr-auto">
                 <?= nav_menu('nav-link') ?>
             </ul>
+            <?php if (est_connecte()) : ?>
+
+                <ul class="navbar-nav">
+                    <a class="nav-link" href="logout.php">Se déconnecter</a>
+                </ul>
+            <?php endif ?>
 
         </div>
     </nav>
